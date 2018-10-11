@@ -3,8 +3,11 @@
   Keep your logic out of this file. Just use it to start running your app
   This file is ignored in test coverage reports
 */
+
+// @flow
+import { defaultOptions, getOptions } from 'penthouse/config'
+
 import App from './penthouse-cli'
-import { penthouseOptions as getOptions } from 'penthouse'
 import program from 'commander'
 
 const app = new App()
@@ -17,30 +20,13 @@ const progWithOptions = program.version('0.1.2').usage('[options] <file ...>')
 const options = getOptions()
 
 Object.keys(options).reduce(
-  (prevVal, curVal) => {
-    console.log(curVal, options, options[curVal])
-    const { command, desc, value } = options[curVal]
-    return prevVal.option(command, desc, () => {}, value)
+  (prevVal /* : any */, curVal) => {
+    const { command, desc } = defaultOptions[curVal]
+    console.log(curVal)
+    return prevVal.option(command, desc, () => {}, options[curVal])
   }
   , progWithOptions
 )
-
-// function range(val) {
-//   return val.split('..').map(Number)
-// }
-
-// function list(val) {
-//   return val.split(',')
-// }
-
-// function collect(val, memo) {
-//   memo.push(val)
-//   return memo
-// }
-
-// function increaseVerbosity(v, total) {
-//   return total + 1
-// }
 
 // program
 //   .version('0.1.0')
@@ -53,7 +39,6 @@ Object.keys(options).reduce(
 //   .option('-c, --collect [value]', 'A repeatable value', collect, [])
 //   .option('-v, --verbose', 'A value that can be increased', increaseVerbosity, 0)
 //   .parse(process.argv)
-
 
 console.log(' int: %j', program.width, program.height)
 // console.log(' float: %j', program.float)

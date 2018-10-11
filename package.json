@@ -6,10 +6,13 @@
   ],
   "scripts": {
     "flow:init": "flow-mono create-symlinks",
-    "flow:install-types": "flow-mono install-types"
+    "flow:install-types": "flow-mono install-types",
+    "install": "lerna link",
+    "bs": "lerna bootstrap"
   },
   "devDependencies": {
     "babel-preset-flow": "^6.23.0",
+    "flow": "^0.2.3",
     "flow-bin": "^0.82.0",
     "flow-mono-cli": "^1.4.2",
     "lerna": "^3.4.1"
