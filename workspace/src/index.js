@@ -4,22 +4,24 @@
   This file is ignored in test coverage reports
 */
 import App from './penthouse-cli'
+import { penthouseOptions as getOptions } from 'penthouse'
 import program from 'commander'
-import { penthouseConf } from 'penthouse'
 
 const app = new App()
 app.clear()
 app.sayHello()
-app.getVersion().then(version => console.log(version))
+app.getVersion().then(console.log)
 
 const progWithOptions = program.version('0.1.2').usage('[options] <file ...>')
 
-const options =
+const options = getOptions()
 
-options.reduce(
-  (prevVal, { command, desc, value }) =>
-  // console.log(prevVal, command)
-    prevVal.option(command, desc, () => {}, value)
+Object.keys(options).reduce(
+  (prevVal, curVal) => {
+    console.log(curVal, options, options[curVal])
+    const { command, desc, value } = options[curVal]
+    return prevVal.option(command, desc, () => {}, value)
+  }
   , progWithOptions
 )
 
