@@ -1,4 +1,18 @@
 {
   "private": true,
-  "workspaces": ["workspace", "penthouse"]
+  "workspaces": [
+    "workspace",
+    "penthouse"
+  ],
+  "scripts": {
+    "flow:init": "flow-mono create-symlinks",
+    "flow:install-types": "flow-mono install-types"
+  },
+  "devDependencies": {
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.82.0",
+    "flow-mono-cli": "^1.4.2",
+    "lerna": "^3.4.1"
+  },
+  "name": "@penthouse/cli"
 }
