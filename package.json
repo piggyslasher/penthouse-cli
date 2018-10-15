@@ -15,7 +15,8 @@
     "flow": "^0.2.3",
     "flow-bin": "^0.82.0",
     "flow-mono-cli": "^1.4.2",
-    "lerna": "^3.4.1"
+    "lerna": "^3.4.1",
+    "standard": "11"
   },
   "name": "@penthouse/cli"
 }

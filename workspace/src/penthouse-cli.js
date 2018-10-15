@@ -18,7 +18,7 @@ export default class App {
 
   async getVersion() {
     return JSON
-      .parse(await readFileAsync(`${process.cwd()}/package.json`, 'utf8')).version
+      .parse(await readFileAsync(`${__dirname}/../package.json`, 'utf8')).version
   }
 
   async getSumD(x, y) {
